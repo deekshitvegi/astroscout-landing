@@ -1,5 +1,5 @@
 /*
- * Sticky glass navbar. Monogram + links + "Launch app" glass capsule CTA
+ * Sticky glass navbar. Monogram + links + live-tools glass capsule CTA
  * (magnetic pull, specular top edge). Collapses to monogram + CTA on mobile.
  */
 import { useMagnetic } from "./interactions";
@@ -9,6 +9,7 @@ const LINKS = [
   { href: "#orbit", label: "Orbit" },
   { href: "#launches", label: "Launches" },
   { href: "#tonight", label: "Tonight" },
+  { href: "#ask", label: "Ask" },
 ];
 
 export function Monogram({ className = "h-7 w-7" }: { className?: string }) {
@@ -55,13 +56,12 @@ export default function Nav({ reduced }: { reduced: boolean }) {
         </div>
         <a
           ref={ctaRef}
-          href="#ask"
+          href="#sky"
           className="relative overflow-hidden rounded-full border border-white/12 bg-white/[0.07] px-4 py-2 text-[13px] font-medium text-ink shadow-[0_1px_0_0_rgba(255,255,255,0.22)_inset] transition-colors duration-200 hover:bg-white/[0.12] active:scale-[0.95]"
         >
-          Launch app
+          Use tools
         </a>
       </nav>
     </header>
   );
 }
-

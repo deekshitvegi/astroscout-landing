@@ -5,14 +5,14 @@
 import { useEffect, useRef, useState } from "react";
 
 const METRICS = [
-  { end: 2.5, dec: 1, suffix: "M+", label: "Stars mapped" },
-  { end: 120, dec: 0, suffix: "+", label: "Launches tracked" },
+  { end: 4, dec: 0, suffix: "", label: "Live data feeds" },
+  { end: 61, dec: 0, suffix: "", label: "Hero frames" },
   { end: 0, dec: 0, suffix: "", label: "Dollars" },
 ];
 
 const SOURCES = [
   { name: "NASA", url: "https://api.nasa.gov", host: "nasa.gov" },
-  { name: "Celestrak", url: "https://celestrak.org", host: "celestrak.org" },
+  { name: "Where the ISS at", url: "https://wheretheiss.at", host: "wheretheiss.at" },
   { name: "Open-Meteo", url: "https://open-meteo.com", host: "open-meteo.com" },
   { name: "Launch Library", url: "https://thespacedevs.com", host: "thespacedevs.com" },
 ];
@@ -74,7 +74,7 @@ export default function FreeBand({ reduced }: { reduced: boolean }) {
         <div className="mx-auto max-w-6xl px-6">
           <div className="glass px-8 py-10 md:px-12">
             <h2 className="max-w-xl font-display text-4xl font-semibold leading-none tracking-tighter text-ink md:text-5xl">
-              100% free. Powered by open data.
+              100% free. Powered by live public data.
             </h2>
             <div className="mt-10 grid gap-8 border-t border-white/[0.07] pt-8 md:grid-cols-[1fr_1fr_0.7fr_auto] md:items-end">
               {METRICS.map((m) => (

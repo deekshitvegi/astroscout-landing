@@ -16,24 +16,24 @@ const framePath = (i: number) => publicAsset(`frames/hero/f_${String(i + 1).padS
 
 const CHAT_LOOP = [
   {
-    q: "When does the ISS pass over Lisbon tonight?",
-    a: "Tonight at 21:47 WEST, rising in the southwest. It stays visible for 6 minutes, peaking at 62 degrees.",
+    q: "Where is the ISS right now?",
+    a: "The Orbit panel and live assistant fetch the current station latitude, longitude, altitude, and speed from a public API.",
   },
   {
-    q: "Is tonight good for seeing Saturn?",
-    a: "Yes. Saturn rises at 22:10 with clear skies until about 2 AM. Look southeast, above the rooftops.",
+    q: "Is tonight worth observing?",
+    a: "The Tonight panel checks live cloud cover, visibility, rain chance, temperature, and current moon phase for your city.",
   },
   {
-    q: "What was that bright dot moving fast at 9 PM?",
-    a: "Almost certainly a Starlink train, batch G9-14, which crossed your sky at 21:03 heading northeast.",
+    q: "What is the next rocket launch?",
+    a: "The Launches panel reads upcoming NET windows from Launch Library and counts down to the next listed launch.",
   },
 ];
 
 const PLACEHOLDERS = [
-  "When can I see the ISS from my city?",
-  "What planets are visible tonight?",
-  "When is the next rocket launch?",
-  "Where is comet C/2026 A1 right now?",
+  "Where is the ISS now?",
+  "Show upcoming rocket launches",
+  "Cloud cover tonight in Chicago",
+  "Closest asteroid today",
 ];
 
 function useTypedPlaceholder(reduced: boolean): string {
@@ -116,7 +116,7 @@ function ChatBubble({ reduced }: { reduced: boolean }) {
       <div className="flex items-center gap-2">
         <img src={publicAsset("assets/icons/chat.png")} alt="" className="h-4 w-4 opacity-80" />
         <span className="font-mono-data text-[11px] uppercase tracking-[0.18em] text-ink-2">
-          Live answer
+          Available now
         </span>
       </div>
       <p className="mt-3 min-h-[1.4em] text-[15px] leading-snug text-ink">
@@ -279,12 +279,12 @@ export default function Hero({ reduced }: { reduced: boolean }) {
               data-rise
               className="font-display text-5xl font-semibold leading-none tracking-tighter text-white md:text-7xl"
             >
-              Your AI copilot
+              Your live console{" "}
               <br />
               for the night sky
             </h1>
             <p data-rise className="max-w-md text-base leading-relaxed text-ink-2">
-              Plan, observe, and understand the universe. Live orbital data, one question away.
+              Plan tonight with live ISS position, launch schedules, weather, moon phase, and NASA asteroid data.
             </p>
             <div data-rise className="glass flex w-full max-w-xl items-center gap-3 py-2 pl-6 pr-2">
               <svg
@@ -308,7 +308,7 @@ export default function Hero({ reduced }: { reduced: boolean }) {
                 }}
                 className="group rounded-full bg-star/90 px-5 py-3 text-[14px] font-medium text-space transition-colors duration-200 hover:bg-star active:scale-[0.94]"
               >
-                Ask AstroScout
+                Ask live data
               </button>
             </div>
             <div data-rise className="flex w-full justify-center">
@@ -329,5 +329,3 @@ export default function Hero({ reduced }: { reduced: boolean }) {
     </section>
   );
 }
-
-

@@ -1,20 +1,20 @@
-# AstroScout - landing site
+# AstroScout - live sky tools
 
-Your AI copilot for the night sky. AstroScout is a scroll-driven, liquid-glass landing page with an interactive planetarium, simulated ISS tracking, rocket launch countdowns, tonight's sky report, asteroid watch, and an ask-anything chat demo.
+AstroScout is a public, browser-based night-sky tool. It keeps the scroll-driven glass design, but the core panels now fetch live public data for ISS position, upcoming launches, local cloud cover, moon phase, and near-Earth asteroid close approaches.
 
 **Live site:** https://deekshitvegi.github.io/astroscout-landing/
 
 ![AstroScout](app/public/assets/og-cover.png)
 
-## Highlights
+## What Works
 
-- **Scroll-scrubbed hero** - a 61-frame generated film painted to canvas, with a typing "Ask AstroScout" loop
-- **Pinned scrollytelling** - phone mockup stays centered while 3 feature steps swap beside it
-- **Interactive planetarium** - drag-to-pan canvas sky built from a J2000 star catalog, constellations, planets, and a time-of-night slider
-- **ISS tracker** - animated ground track over a dotted world map with ticking telemetry
-- **Launch board** - ticking T-minus countdowns with in-person viewing spots
-- **Tonight bento** - moon phase, planet visibility, cloud-cover chart, and floating asteroid bubbles
-- Liquid-glass design system with aurora orbs, parallax starfield, magnetic buttons, cursor glow, and reduced-motion support
+- **Interactive planetarium** - drag-to-pan canvas sky with stars, constellation lines, planets, and a time slider
+- **Live ISS tracker** - current station latitude, longitude, altitude, speed, visibility, and map position
+- **Live launch tracker** - upcoming launches and countdowns from Launch Library
+- **Tonight report** - Open-Meteo cloud cover, visibility, rain chance, temperature, and a city/location control
+- **Asteroid watch** - today's nearest known approaches from NASA NeoWs
+- **Ask live data** - browser-side assistant for ISS, launches, weather, asteroids, and moon phase with visible sources
+- **Scroll experience** - retained hero scrub, sticky guide, parallax starfield, aurora orbs, glass panels, and reduced-motion support
 
 ## Stack
 
@@ -29,7 +29,7 @@ npm run dev
 npm run build
 ```
 
-The generated media assets are committed under `app/public` so GitHub Pages can build the site without needing the original Higgsfield deployment.
+The generated media assets are committed under `app/public` so GitHub Pages can build the site without depending on the original Higgsfield deployment.
 
 ## Deployment
 
@@ -40,16 +40,17 @@ Pushing to `main` runs `.github/workflows/deploy.yml`, builds the app from `app/
 ```text
 app/
   src/
-    components/astro/   # all landing sections + scroll runtime
+    components/astro/   # all site sections + scroll runtime
+      live-data.ts      # browser API clients and data formatting
       hero.tsx          # scroll-scrubbed film hero
-      how-it-works.tsx  # pinned phone scrollytelling
+      how-it-works.tsx  # sticky guide to the on-page tools
       planetarium.tsx   # drag-to-pan canvas sky
       star-catalog.ts   # J2000 star, constellation, and planet data
-      iss-tracker.tsx   # simulated orbit ground track
-      launches.tsx      # ticking T-minus board
-      tonight.tsx       # sky report + asteroid watch bento
-      ask-anything.tsx  # canned AI chat demo
-      free-band.tsx     # count-up metrics + credits footer
+      iss-tracker.tsx   # live ISS map and telemetry
+      launches.tsx      # live launch board
+      tonight.tsx       # sky report + NASA asteroid bento
+      ask-anything.tsx  # live data assistant
+      free-band.tsx     # source credits + GitHub link
       starfield.tsx     # parallax starfield + aurora orbs
       scroll-runtime.ts # Lenis + GSAP bridge
     styles.css          # design tokens + glass system
@@ -57,8 +58,8 @@ app/
   public/frames/hero/   # 61 scrub film frames
 ```
 
-## Data Sources Credited
+## Data Sources
 
-[NASA](https://api.nasa.gov), [Celestrak](https://celestrak.org), [Open-Meteo](https://open-meteo.com), and [Launch Library](https://thespacedevs.com).
+[NASA NeoWs](https://api.nasa.gov), [Where the ISS at](https://wheretheiss.at), [Open-Meteo](https://open-meteo.com), and [Launch Library](https://thespacedevs.com).
 
 All visual assets were AI-generated for this project.

@@ -1,7 +1,7 @@
 /*
  * AstroPage: client-side page shell. Boots the Lenis+GSAP scroll runtime,
  * mounts the fixed starfield + cursor glow, and choreographs per-section
- * scroll reveals (transform/scale only — screenshot-safe).
+ * scroll reveals (transform/scale only - screenshot-safe).
  */
 import { useEffect, useState } from "react";
 import Starfield from "./starfield";
@@ -86,7 +86,7 @@ export default function AstroPage() {
           <Tonight reduced={reduced} />
         </div>
         <div data-chapter>
-          <AskAnything reduced={reduced} />
+          <AskAnything />
         </div>
         <div data-chapter>
           <FreeBand reduced={reduced} />
@@ -95,4 +95,3 @@ export default function AstroPage() {
     </div>
   );
 }
-
