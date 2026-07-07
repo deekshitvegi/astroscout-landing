@@ -1,0 +1,147 @@
+@layer reset, theme, base, components, utilities;
+
+@import "tailwindcss";
+@import "@fontsource-variable/inter-tight";
+@import "@fontsource-variable/inter";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+
+/* ============ AstroScout token layer ============ */
+@theme {
+  --color-space: #04060d;
+  --color-space-2: #070b16;
+  --color-star: #8caeff;
+  --color-ink: #e8edf8;
+  --color-ink-2: #8b93a7;
+  --color-aur-indigo: #1b2f7a;
+  --color-aur-violet: #3a1d6e;
+  --color-aur-teal: #0d3b5c;
+  --font-display: "Inter Tight Variable", "Inter Variable", system-ui, sans-serif;
+  --font-body: "Inter Variable", system-ui, sans-serif;
+  --font-mono-data: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  html {
+    background-color: #04060d;
+    color: #e8edf8;
+    color-scheme: dark;
+  }
+
+  body {
+    min-height: 100vh;
+    background-color: #04060d;
+    color: #e8edf8;
+    font-family: var(--font-body);
+  }
+
+  .astro-page {
+    background-color: var(--color-space);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    overflow-x: clip;
+  }
+  .astro-page ::selection {
+    background: rgba(140, 174, 255, 0.28);
+    color: #ffffff;
+  }
+}
+
+@layer components {
+  /* Liquid glass panel: 24px blur, 1px specular top edge, 26px corners */
+  .glass {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.032) 42%, rgba(255, 255, 255, 0.022));
+    -webkit-backdrop-filter: blur(24px) saturate(1.35);
+    backdrop-filter: blur(24px) saturate(1.35);
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow:
+      0 1px 0 0 rgba(255, 255, 255, 0.22) inset,
+      0 -1px 0 0 rgba(255, 255, 255, 0.04) inset,
+      0 24px 60px -18px rgba(0, 0, 0, 0.72),
+      0 8px 24px -12px rgba(0, 0, 0, 0.5);
+  }
+  .glass-soft {
+    position: relative;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.018));
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+    border-radius: 26px;
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.14) inset, 0 16px 44px -16px rgba(0, 0, 0, 0.6);
+  }
+  .hairline-y > * + * {
+    border-top: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  /* time slider */
+  .astro-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(140, 174, 255, 0.55), rgba(140, 174, 255, 0.18));
+    outline: none;
+    cursor: ew-resize;
+  }
+  .astro-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #e8edf8;
+    border: 2px solid #8caeff;
+    box-shadow: 0 0 14px rgba(140, 174, 255, 0.6);
+    transition: transform 0.15s ease;
+  }
+  .astro-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+  }
+  .astro-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #e8edf8;
+    border: 2px solid #8caeff;
+    box-shadow: 0 0 14px rgba(140, 174, 255, 0.6);
+  }
+
+  /* skeleton shimmer */
+  .astro-shimmer {
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0.06) 30%,
+      rgba(140, 174, 255, 0.16) 50%,
+      rgba(255, 255, 255, 0.06) 70%
+    );
+    background-size: 220% 100%;
+    animation: astro-shimmer-slide 1.4s ease-in-out infinite;
+  }
+}
+
+@keyframes astro-shimmer-slide {
+  from {
+    background-position: 130% 0;
+  }
+  to {
+    background-position: -80% 0;
+  }
+}
+
+@keyframes astro-float {
+  from {
+    transform: translate(-50%, -50%) translateY(-4px);
+  }
+  to {
+    transform: translate(-50%, -50%) translateY(5px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .astro-shimmer {
+    animation: none;
+  }
+}
+
